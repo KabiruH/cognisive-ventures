@@ -1,26 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy:       #1B2085;
+  --navy-dark:  #111466;
+  --navy-light: #2B33C5;
+  --accent:     #4F5BD5;
+  --sky:        #E8EAFF;
+  --white:      #FFFFFF;
+  --offwhite:   #F7F8FF;
+  --text:       #0E1240;
+  --muted:      #6B7280;
+  --border:     #DDE0FF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--white);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+h1, h2, h3, h4, h5, h6 { font-family: 'Syne', sans-serif; }
+
+::selection { background: var(--navy); color: white; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--offwhite); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
