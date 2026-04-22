@@ -16,55 +16,147 @@ const highlights = [
 export default function About() {
   return (
     <section id="about" style={{ background: "#F7F8FF" }}>
-      <div style={{ maxWidth: "1280px", width: "100%", margin: "0 auto", padding: "96px 48px" }}>
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.6 }} className="relative">
-            <div className="relative h-105 rounded-2xl overflow-hidden">
-              <Image src="/3.jpg" alt="Our technician at work" fill className="object-cover" />
+      <div style={{ maxWidth: "1280px", width: "100%", margin: "0 auto", padding: "96px 64px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
+
+          {/* Left — Images */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{ position: "relative", paddingBottom: "40px" }}
+          >
+            {/* Main image */}
+            <div style={{ position: "relative", height: "480px", borderRadius: "16px", overflow: "hidden" }}>
+              <Image src="/3.jpg" alt="Our technician at work" fill sizes="50vw" style={{ objectFit: "cover" }} />
             </div>
-            <div className="absolute -bottom-8 -right-6 w-48 h-40 rounded-xl overflow-hidden hidden md:block"
-              style={{ border: "4px solid white", boxShadow: "0 8px 32px rgba(27,32,133,0.15)" }}>
-              <Image src="/2.jpg" alt="Hardware expertise" fill className="object-cover" />
+
+            {/* Floating secondary image */}
+            <div style={{
+              position: "absolute",
+              bottom: "0px",
+              right: "-24px",
+              width: "200px",
+              height: "160px",
+              borderRadius: "12px",
+              overflow: "hidden",
+              border: "4px solid white",
+              boxShadow: "0 8px 32px rgba(27,32,133,0.15)",
+            }}>
+              <Image src="/2.jpg" alt="Hardware expertise" fill sizes="200px" style={{ objectFit: "cover" }} />
             </div>
-            <div className="absolute -top-4 -left-4 w-24 h-24 rounded-2xl flex-col items-center justify-center hidden md:flex"
-              style={{ background: "#1B2085", boxShadow: "0 8px 32px rgba(27,32,133,0.3)" }}>
-              <span className="text-white text-2xl font-bold" style={{ fontFamily: "Syne, sans-serif" }}>20+</span>
-              <span className="text-white/60 text-xs text-center leading-tight mt-0.5" style={{ fontFamily: "DM Sans, sans-serif" }}>Yrs Exp.</span>
+
+            {/* Years badge */}
+            <div style={{
+              position: "absolute",
+              top: "-16px",
+              left: "-16px",
+              width: "100px",
+              height: "100px",
+              borderRadius: "16px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "#1B2085",
+              boxShadow: "0 8px 32px rgba(27,32,133,0.3)",
+            }}>
+              <span style={{ color: "white", fontSize: "26px", fontWeight: 700, fontFamily: "Syne, sans-serif" }}>20+</span>
+              <span style={{ color: "rgba(255,255,255,0.55)", fontSize: "11px", fontFamily: "DM Sans, sans-serif", marginTop: "2px" }}>Yrs Exp.</span>
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium mb-5"
-              style={{ background: "#E8EAFF", color: "#1B2085", fontFamily: "DM Sans, sans-serif", letterSpacing: "0.1em" }}>
+          {/* Right — Copy */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{ display: "flex", flexDirection: "column" }}
+          >
+            <span style={{
+              display: "inline-block",
+              padding: "6px 16px",
+              borderRadius: "999px",
+              fontSize: "11px",
+              fontWeight: 500,
+              marginBottom: "20px",
+              width: "fit-content",
+              background: "#E8EAFF",
+              color: "#1B2085",
+              fontFamily: "DM Sans, sans-serif",
+              letterSpacing: "0.12em",
+            }}>
               ABOUT US
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-5" style={{ fontFamily: "Syne, sans-serif", color: "#0E1240" }}>
+
+            <h2 style={{
+              fontFamily: "Syne, sans-serif",
+              color: "#0E1240",
+              fontSize: "clamp(2rem, 3.5vw, 3rem)",
+              fontWeight: 700,
+              lineHeight: 1.15,
+              marginBottom: "28px",
+            }}>
               Tech Problems Solved.<br />
               <span style={{ color: "#1B2085" }}>Every Single Time.</span>
             </h2>
-            <p className="text-base leading-relaxed mb-6" style={{ color: "#6B7280", fontFamily: "DM Sans, sans-serif" }}>
+
+            <p style={{
+              color: "#6B7280",
+              fontFamily: "DM Sans, sans-serif",
+              fontSize: "15px",
+              lineHeight: 1.75,
+              marginBottom: "20px",
+            }}>
               Cognisive Ventures was founded by George, a veteran IT professional with over two decades of experience. His mission was simple — give businesses a reliable IT partner they could call on without the complexity or the waiting.
             </p>
-            <p className="text-base leading-relaxed mb-8" style={{ color: "#6B7280", fontFamily: "DM Sans, sans-serif" }}>
+
+            <p style={{
+              color: "#6B7280",
+              fontFamily: "DM Sans, sans-serif",
+              fontSize: "15px",
+              lineHeight: 1.75,
+              marginBottom: "36px",
+            }}>
               From our base on Accra Road in Nairobi&apos;s Superior Arcade, we&apos;ve grown a loyal network of businesses that trust us with everything from routine maintenance to complex infrastructure setups.
             </p>
-            <ul className="flex flex-col gap-3 mb-10">
+
+            {/* Highlights */}
+            <ul style={{ display: "flex", flexDirection: "column", gap: "14px", marginBottom: "40px" }}>
               {highlights.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2 size={18} className="shrink-0 mt-0.5" style={{ color: "#1B2085" }} />
-                  <span className="text-sm" style={{ color: "#374151", fontFamily: "DM Sans, sans-serif" }}>{item}</span>
+                <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                  <CheckCircle2 size={18} style={{ color: "#1B2085", flexShrink: 0, marginTop: "2px" }} />
+                  <span style={{ color: "#374151", fontFamily: "DM Sans, sans-serif", fontSize: "14px", lineHeight: 1.6 }}>
+                    {item}
+                  </span>
                 </li>
               ))}
             </ul>
+
             <button
               onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-7 py-3.5 text-sm font-semibold rounded-lg cursor-pointer transition-all hover:opacity-90"
-              style={{ background: "#1B2085", color: "white", fontFamily: "DM Sans, sans-serif" }}>
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                padding: "14px 32px",
+                fontSize: "14px",
+                fontWeight: 600,
+                borderRadius: "10px",
+                background: "#1B2085",
+                color: "white",
+                border: "none",
+                cursor: "pointer",
+                fontFamily: "DM Sans, sans-serif",
+                width: "fit-content",
+                transition: "opacity 0.2s",
+              }}
+            >
               Work With Us
             </button>
           </motion.div>
+
         </div>
       </div>
     </section>

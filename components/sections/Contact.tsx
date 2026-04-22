@@ -17,7 +17,10 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const services = ["Windows Installation", "Antivirus & Security", "Hardware Repair", "HDD to SSD Upgrade", "RAM Upgrade", "Networking", "Computer Supply", "Other"];
+const serviceList = [
+  "Windows Installation", "Antivirus & Security", "Hardware Repair",
+  "HDD to SSD Upgrade", "RAM Upgrade", "Networking", "Computer Supply", "Other",
+];
 
 export default function Contact() {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting, isSubmitSuccessful } } =
@@ -29,113 +32,265 @@ export default function Contact() {
     reset();
   };
 
-  const inputStyle = (hasError: boolean) => ({
+  const inputStyle = (hasError: boolean): React.CSSProperties => ({
     border: hasError ? "1px solid #ef4444" : "1px solid #DDE0FF",
     fontFamily: "DM Sans, sans-serif",
     color: "#0E1240",
     background: "#F7F8FF",
     width: "100%",
-    padding: "12px 16px",
+    padding: "13px 16px",
     fontSize: "14px",
-    borderRadius: "12px",
+    borderRadius: "10px",
     outline: "none",
   });
 
+  const labelStyle: React.CSSProperties = {
+    display: "block",
+    fontSize: "12px",
+    fontWeight: 500,
+    marginBottom: "8px",
+    color: "#374151",
+    fontFamily: "DM Sans, sans-serif",
+  };
+
   return (
     <section id="contact" style={{ background: "#F7F8FF" }}>
-      <div style={{ maxWidth: "1280px", width: "100%", margin: "0 auto", padding: "96px 48px" }}>
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium mb-4"
-            style={{ background: "#E8EAFF", color: "#1B2085", fontFamily: "DM Sans, sans-serif", letterSpacing: "0.1em" }}>
+      <div style={{ maxWidth: "1280px", width: "100%", margin: "0 auto", padding: "96px 64px" }}>
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          style={{ textAlign: "center", marginBottom: "64px" }}
+        >
+          <span style={{
+            display: "inline-block",
+            padding: "6px 16px",
+            borderRadius: "999px",
+            fontSize: "11px",
+            fontWeight: 500,
+            marginBottom: "16px",
+            background: "#E8EAFF",
+            color: "#1B2085",
+            fontFamily: "DM Sans, sans-serif",
+            letterSpacing: "0.12em",
+          }}>
             GET IN TOUCH
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: "Syne, sans-serif", color: "#0E1240" }}>
+          <h2 style={{
+            fontFamily: "Syne, sans-serif",
+            color: "#0E1240",
+            fontSize: "clamp(2rem, 3.5vw, 3rem)",
+            fontWeight: 700,
+            lineHeight: 1.15,
+            marginBottom: "16px",
+          }}>
             Let&apos;s Solve Your<br />Tech Problems
           </h2>
-          <p className="text-base max-w-md mx-auto" style={{ color: "#6B7280", fontFamily: "DM Sans, sans-serif" }}>
+          <p style={{
+            color: "#6B7280",
+            fontFamily: "DM Sans, sans-serif",
+            fontSize: "15px",
+            maxWidth: "400px",
+            margin: "0 auto",
+            lineHeight: 1.65,
+          }}>
             Reach out today — we&apos;ll get back to you fast.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-10">
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.5 }} className="lg:col-span-2 flex flex-col gap-6">
-            <div className="rounded-2xl p-7" style={{ background: "#1B2085" }}>
-              <h3 className="text-white font-bold text-xl mb-2" style={{ fontFamily: "Syne, sans-serif" }}>Visit Our Shop</h3>
-              <p className="text-white/60 text-sm mb-6" style={{ fontFamily: "DM Sans, sans-serif" }}>Walk-ins welcome. We&apos;re open Monday to Saturday.</p>
-              <div className="flex flex-col gap-4">
-                <div className="flex gap-3">
-                  <MapPin size={16} className="shrink-0 mt-0.5" style={{ color: "#93c5fd" }} />
-                  <p className="text-white/70 text-sm leading-relaxed" style={{ fontFamily: "DM Sans, sans-serif" }}>
+        {/* Two-column layout */}
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 3fr", gap: "40px", alignItems: "start" }}>
+
+          {/* Left — Info + Map */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+          >
+            {/* Info card */}
+            <div style={{
+              borderRadius: "16px",
+              padding: "32px",
+              background: "#1B2085",
+            }}>
+              <h3 style={{
+                color: "white",
+                fontFamily: "Syne, sans-serif",
+                fontSize: "20px",
+                fontWeight: 700,
+                marginBottom: "8px",
+              }}>
+                Visit Our Shop
+              </h3>
+              <p style={{
+                color: "rgba(255,255,255,0.55)",
+                fontFamily: "DM Sans, sans-serif",
+                fontSize: "14px",
+                marginBottom: "28px",
+                lineHeight: 1.6,
+              }}>
+                Walk-ins welcome. We&apos;re open Monday to Saturday.
+              </p>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+                <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                  <MapPin size={16} style={{ color: "#93c5fd", flexShrink: 0, marginTop: "2px" }} />
+                  <p style={{ color: "rgba(255,255,255,0.7)", fontFamily: "DM Sans, sans-serif", fontSize: "14px", lineHeight: 1.6 }}>
                     Superior Arcade, 2nd Floor, Shop 2-02<br />Accra Road, Nairobi City
                   </p>
                 </div>
-                <div className="flex gap-3 items-center">
-                  <Phone size={16} className="shrink-0" style={{ color: "#93c5fd" }} />
-                  <a href="tel:+254735606059" className="text-white/70 hover:text-white text-sm transition-colors" style={{ fontFamily: "DM Sans, sans-serif" }}>0735 606 059</a>
+                <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+                  <Phone size={16} style={{ color: "#93c5fd", flexShrink: 0 }} />
+                  <a href="tel:+254735606059" style={{
+                    color: "rgba(255,255,255,0.7)",
+                    fontFamily: "DM Sans, sans-serif",
+                    fontSize: "14px",
+                    textDecoration: "none",
+                  }}>
+                    0735 606 059
+                  </a>
                 </div>
-                <div className="flex gap-3 items-center">
-                  <Mail size={16} className="shrink-0" style={{ color: "#93c5fd" }} />
-                  <a href="mailto:hello@cognisive.co.ke" className="text-white/70 hover:text-white text-sm transition-colors" style={{ fontFamily: "DM Sans, sans-serif" }}>hello@cognisive.co.ke</a>
+                <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+                  <Mail size={16} style={{ color: "#93c5fd", flexShrink: 0 }} />
+                  <a href="mailto:hello@cognisive.co.ke" style={{
+                    color: "rgba(255,255,255,0.7)",
+                    fontFamily: "DM Sans, sans-serif",
+                    fontSize: "14px",
+                    textDecoration: "none",
+                  }}>
+                    hello@cognisive.co.ke
+                  </a>
                 </div>
               </div>
             </div>
-            <div className="rounded-2xl overflow-hidden flex-1 min-h-45">
-              <iframe title="Cognisive Location"
+
+            {/* Map */}
+            <div style={{ borderRadius: "16px", overflow: "hidden", border: "1px solid #DDE0FF" }}>
+              <iframe
+                title="Cognisive Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.817905!2d36.8219!3d-1.2864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zAccra+Road+Nairobi!5e0!3m2!1sen!2ske!4v1"
-                width="100%" height="200" style={{ border: 0 }} loading="lazy" />
+                width="100%"
+                height="220"
+                style={{ border: 0, display: "block" }}
+                loading="lazy"
+              />
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.5 }} className="lg:col-span-3">
-            <div className="rounded-2xl p-8" style={{ background: "white", border: "1px solid #DDE0FF", boxShadow: "0 4px 24px rgba(27,32,133,0.06)" }}>
+          {/* Right — Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div style={{
+              borderRadius: "16px",
+              padding: "40px",
+              background: "white",
+              border: "1px solid #DDE0FF",
+              boxShadow: "0 4px 24px rgba(27,32,133,0.06)",
+            }}>
               {isSubmitSuccessful ? (
-                <div className="flex flex-col items-center justify-center py-16 text-center gap-4">
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ background: "#E8EAFF" }}>
+                <div style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "64px 0",
+                  textAlign: "center",
+                  gap: "16px",
+                }}>
+                  <div style={{
+                    width: "64px",
+                    height: "64px",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background: "#E8EAFF",
+                  }}>
                     <Send size={24} style={{ color: "#1B2085" }} />
                   </div>
-                  <h3 className="text-xl font-bold" style={{ fontFamily: "Syne, sans-serif", color: "#0E1240" }}>Message Sent!</h3>
-                  <p className="text-sm" style={{ color: "#6B7280", fontFamily: "DM Sans, sans-serif" }}>We&apos;ll get back to you shortly.</p>
+                  <h3 style={{ fontFamily: "Syne, sans-serif", color: "#0E1240", fontSize: "20px", fontWeight: 700 }}>
+                    Message Sent!
+                  </h3>
+                  <p style={{ color: "#6B7280", fontFamily: "DM Sans, sans-serif", fontSize: "14px" }}>
+                    We&apos;ll get back to you shortly.
+                  </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
-                  <div className="grid sm:grid-cols-2 gap-5">
+                <form onSubmit={handleSubmit(onSubmit)} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+
+                  {/* Name + Email */}
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
                     <div>
-                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#374151", fontFamily: "DM Sans, sans-serif" }}>Full Name *</label>
+                      <label style={labelStyle}>Full Name *</label>
                       <input {...register("name")} placeholder="John Kamau" style={inputStyle(!!errors.name)} />
-                      {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name.message}</p>}
+                      {errors.name && <p style={{ color: "#ef4444", fontSize: "12px", marginTop: "4px" }}>{errors.name.message}</p>}
                     </div>
                     <div>
-                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#374151", fontFamily: "DM Sans, sans-serif" }}>Email *</label>
+                      <label style={labelStyle}>Email *</label>
                       <input {...register("email")} placeholder="john@company.co.ke" style={inputStyle(!!errors.email)} />
-                      {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>}
+                      {errors.email && <p style={{ color: "#ef4444", fontSize: "12px", marginTop: "4px" }}>{errors.email.message}</p>}
                     </div>
                   </div>
-                  <div className="grid sm:grid-cols-2 gap-5">
+
+                  {/* Phone + Service */}
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
                     <div>
-                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#374151", fontFamily: "DM Sans, sans-serif" }}>Phone (optional)</label>
+                      <label style={labelStyle}>Phone (optional)</label>
                       <input {...register("phone")} placeholder="0700 000 000" style={inputStyle(false)} />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium mb-1.5" style={{ color: "#374151", fontFamily: "DM Sans, sans-serif" }}>Service Needed *</label>
+                      <label style={labelStyle}>Service Needed *</label>
                       <select {...register("service")} style={inputStyle(!!errors.service)}>
                         <option value="">Select a service...</option>
-                        {services.map((s) => <option key={s} value={s}>{s}</option>)}
+                        {serviceList.map((s) => <option key={s} value={s}>{s}</option>)}
                       </select>
-                      {errors.service && <p className="text-xs text-red-500 mt-1">{errors.service.message}</p>}
+                      {errors.service && <p style={{ color: "#ef4444", fontSize: "12px", marginTop: "4px" }}>{errors.service.message}</p>}
                     </div>
                   </div>
+
+                  {/* Message */}
                   <div>
-                    <label className="block text-xs font-medium mb-1.5" style={{ color: "#374151", fontFamily: "DM Sans, sans-serif" }}>Describe Your Issue *</label>
-                    <textarea {...register("message")} rows={4} placeholder="Tell us what's going on with your system..."
-                      style={{ ...inputStyle(!!errors.message), resize: "none" }} />
-                    {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message.message}</p>}
+                    <label style={labelStyle}>Describe Your Issue *</label>
+                    <textarea
+                      {...register("message")}
+                      rows={5}
+                      placeholder="Tell us what's going on with your system..."
+                      style={{ ...inputStyle(!!errors.message), resize: "none" }}
+                    />
+                    {errors.message && <p style={{ color: "#ef4444", fontSize: "12px", marginTop: "4px" }}>{errors.message.message}</p>}
                   </div>
-                  <button type="submit" disabled={isSubmitting}
-                    className="flex items-center justify-center gap-2 py-3.5 text-sm font-semibold rounded-xl transition-all cursor-pointer disabled:opacity-60"
-                    style={{ background: "#1B2085", color: "white", fontFamily: "DM Sans, sans-serif" }}>
+
+                  {/* Submit */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "8px",
+                      padding: "14px 32px",
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      borderRadius: "10px",
+                      background: "#1B2085",
+                      color: "white",
+                      border: "none",
+                      cursor: isSubmitting ? "not-allowed" : "pointer",
+                      fontFamily: "DM Sans, sans-serif",
+                      opacity: isSubmitting ? 0.6 : 1,
+                      transition: "opacity 0.2s",
+                    }}
+                  >
                     {isSubmitting ? "Sending..." : <><Send size={15} /> Send Message</>}
                   </button>
                 </form>

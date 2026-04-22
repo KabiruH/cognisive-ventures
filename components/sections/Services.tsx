@@ -22,46 +22,125 @@ const fadeUp = {
 export default function Services() {
   return (
     <section id="services" style={{ background: "white" }}>
-      <div style={{ maxWidth: "1280px", width: "100%", margin: "0 auto", padding: "96px 48px" }}>
+      <div style={{ maxWidth: "1280px", width: "100%", margin: "0 auto", padding: "96px 64px" }}>
+
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          style={{ textAlign: "center", marginBottom: "64px" }}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium mb-4"
-            style={{ background: "#E8EAFF", color: "#1B2085", fontFamily: "DM Sans, sans-serif", letterSpacing: "0.1em" }}>
+          <span style={{
+            display: "inline-block",
+            padding: "6px 16px",
+            borderRadius: "999px",
+            fontSize: "11px",
+            fontWeight: 500,
+            marginBottom: "16px",
+            background: "#E8EAFF",
+            color: "#1B2085",
+            fontFamily: "DM Sans, sans-serif",
+            letterSpacing: "0.12em",
+          }}>
             WHAT WE DO
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4"
-            style={{ fontFamily: "Syne, sans-serif", color: "#0E1240" }}>
+          <h2 style={{
+            fontFamily: "Syne, sans-serif",
+            color: "#0E1240",
+            fontSize: "clamp(2rem, 4vw, 3rem)",
+            fontWeight: 700,
+            marginBottom: "16px",
+          }}>
             Complete IT Solutions
           </h2>
-          <p className="text-lg max-w-xl mx-auto" style={{ color: "#6B7280", fontFamily: "DM Sans, sans-serif" }}>
+          <p style={{
+            color: "#6B7280",
+            fontFamily: "DM Sans, sans-serif",
+            fontSize: "17px",
+            maxWidth: "480px",
+            margin: "0 auto",
+            lineHeight: 1.6,
+          }}>
             Every tech problem your business faces — we&apos;ve got it covered.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Cards Grid */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "28px",
+        }}>
           {services.map((service, i) => (
-            <motion.div key={service.title} custom={i} initial="hidden" whileInView="visible"
-              viewport={{ once: true }} variants={fadeUp}
-              className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
-              style={{ border: "1px solid #DDE0FF", background: "white", boxShadow: "0 2px 12px rgba(27,32,133,0.06)" }}>
-              <div className="relative h-44 overflow-hidden">
-                <Image src={service.image} alt={service.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(14,18,64,0.3), rgba(14,18,64,0.6))" }} />
-                <div className="absolute top-4 left-4 w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)" }}>
+            <motion.div
+              key={service.title}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              style={{
+                borderRadius: "16px",
+                overflow: "hidden",
+                border: "1px solid #DDE0FF",
+                background: "white",
+                boxShadow: "0 2px 16px rgba(27,32,133,0.07)",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                cursor: "default",
+              }}
+              whileHover={{ y: -4, boxShadow: "0 8px 32px rgba(27,32,133,0.13)" }}
+            >
+              {/* Image */}
+              <div style={{ position: "relative", height: "200px", overflow: "hidden" }}>
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
+                />
+                <div style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "linear-gradient(to bottom, rgba(14,18,64,0.25), rgba(14,18,64,0.65))",
+                }} />
+                {/* Icon badge */}
+                <div style={{
+                  position: "absolute",
+                  top: "16px",
+                  left: "16px",
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "10px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background: "rgba(255,255,255,0.15)",
+                  backdropFilter: "blur(8px)",
+                }}>
                   <service.icon size={18} color="white" />
                 </div>
               </div>
-              <div className="p-5">
-                <h3 className="font-bold text-base mb-2" style={{ fontFamily: "Syne, sans-serif", color: "#0E1240" }}>
+
+              {/* Card Content */}
+              <div style={{ padding: "24px 24px 28px" }}>
+                <h3 style={{
+                  fontFamily: "Syne, sans-serif",
+                  color: "#0E1240",
+                  fontSize: "16px",
+                  fontWeight: 700,
+                  marginBottom: "10px",
+                }}>
                   {service.title}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "#6B7280", fontFamily: "DM Sans, sans-serif" }}>
+                <p style={{
+                  color: "#6B7280",
+                  fontFamily: "DM Sans, sans-serif",
+                  fontSize: "14px",
+                  lineHeight: 1.7,
+                }}>
                   {service.description}
                 </p>
               </div>

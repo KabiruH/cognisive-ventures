@@ -21,9 +21,22 @@ export default function Footer() {
             <p className="text-white/60 text-sm mb-1" style={{ fontFamily: "DM Sans, sans-serif" }}>Ready to resolve your tech issues?</p>
             <h3 className="text-white text-2xl font-bold" style={{ fontFamily: "Syne, sans-serif" }}>Let&apos;s get your business running smoothly.</h3>
           </div>
-          <button onClick={() => handleClick("#contact")}
-            className="shrink-0 px-7 py-3 text-sm font-semibold rounded-lg cursor-pointer transition-all hover:opacity-90"
-            style={{ background: "white", color: "#1B2085", fontFamily: "DM Sans, sans-serif" }}>
+          <button
+            onClick={() => handleClick("#contact")}
+            style={{
+              flexShrink: 0,
+              padding: "13px 28px",
+              fontSize: "14px",
+              fontWeight: 600,
+              borderRadius: "10px",
+              background: "white",
+              color: "#1B2085",
+              border: "none",
+              cursor: "pointer",
+              fontFamily: "DM Sans, sans-serif",
+              transition: "opacity 0.2s",
+            }}
+          >
             Contact Us Today
           </button>
         </div>
