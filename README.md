@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cognisive Ventures Limited — Website
 
+Official website for **Cognisive Ventures Limited**, a Nairobi-based IT solutions company specialising in hardware repair, software support, networking, and computer supply. Built by [Ubiru Systems](https://ubiruafrica.co.ke).
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 + Inline Styles |
+| Animations | Framer Motion |
+| Forms | React Hook Form + Zod |
+| Icons | Lucide React |
+| UI Primitives | Radix UI |
+| Deployment | Vercel (recommended) |
+
+---
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <repo-url>
+cd cognisive-ventures
+
+# Install dependencies
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Contact & Business Info
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Field | Value |
+|---|---|
+| Location | Superior Arcade, 2nd Floor, Shop 2-02, Accra Road, Nairobi |
+| Phone | 0735 606 059 |
+| Email | hello@cognisive.co.ke |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project is optimised for deployment on **Vercel**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
+
+Alternatively, build and host the `/.next` output on any Node.js-compatible server.
+
+---
+
+## Development Notes
+
+- **Styling approach:** All responsive behaviour is handled via CSS media queries inside `<style>` tags within each component, rather than Tailwind utility classes. This ensures consistent rendering regardless of Tailwind's JIT scanning.
+- **Images:** All images use Next.js `<Image />` with appropriate `sizes` props for optimised delivery at each breakpoint.
+- **Forms:** The contact form uses React Hook Form with Zod schema validation. The `onSubmit` handler currently logs to console — replace with your email API or backend endpoint.
+- **Fonts:** Loaded via Google Fonts in `globals.css`. Syne is used for all headings; DM Sans for body and UI text.
+
+---
+
+*Built by [Ubiru Systems](ubiruafrica@gmail.com)*
