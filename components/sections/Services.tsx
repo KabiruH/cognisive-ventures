@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Monitor, HardDrive, ShieldCheck, Wifi, Package, Wrench } from "lucide-react";
+import { Monitor, HardDrive, ShieldCheck, Wifi, Package, Wrench, Camera, Zap, BellRing, KeyRound } from "lucide-react";
 
 const services = [
   { icon: Monitor, title: "Windows Installation", description: "Clean OS installs, driver setup, and system optimization for all Windows versions.", image: "/1.jpg" },
@@ -12,6 +12,10 @@ const services = [
   { icon: HardDrive, title: "HDD to SSD Upgrades", description: "Speed up your machines with SSD migration and RAM upgrades. Fast, safe, no data loss.", image: "/2.jpg" },
   { icon: Wifi, title: "Networking Solutions", description: "LAN setup, Wi-Fi troubleshooting, network configuration and cabling for offices.", image: "/7.jpg" },
   { icon: Package, title: "Computer Supply", description: "We supply desktops, laptops, accessories and peripherals with full installation support.", image: "/1.jpg" },
+  { icon: Camera, title: "CCTV Installation", description: "Professional CCTV setup and configuration for homes and businesses — indoor and outdoor coverage.", image: "/3.jpg" },
+  { icon: Zap, title: "Razor & Live Fence", description: "Supply and installation of razor wire and electric live fence systems for perimeter security.", image: "/2.jpg" },
+  { icon: BellRing, title: "Alarm Systems", description: "Installation and maintenance of intruder alarm systems tailored to your premises.", image: "/7.jpg" },
+  { icon: KeyRound, title: "Access Control", description: "Biometric, card, and PIN-based access control systems for offices and restricted areas.", image: "/1.jpg" },
 ];
 
 const fadeUp = {
